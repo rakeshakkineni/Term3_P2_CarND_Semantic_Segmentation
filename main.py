@@ -159,11 +159,7 @@ def run():
         train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_loss, input_image,
         	correct_label, keep_prob, learning_rate)
         # TODO: Save inference data using helper.save_inference_samples
-<<<<<<< HEAD
         helper.save_inference_samples(runs_dir, data_dir, sess, image_shape, logits, keep_prob, input_image)
-=======
-          helper.save_inference_samples(runs_dir, data_dir, sess, image_shape, logits, keep_prob, input_image)
->>>>>>> b8377cc789ce8ec3235f1909c3f83d16b9702734
 
         # OPTIONAL: Apply the trained model to a video
 
