@@ -5,7 +5,7 @@ import helper
 import warnings
 from distutils.version import LooseVersion
 import project_tests as tests
-
+import time
 
 # Check TensorFlow Version
 assert LooseVersion(tf.__version__) >= LooseVersion('1.0'), 'Please use TensorFlow version 1.0 or newer.  You are using {}'.format(tf.__version__)
@@ -63,7 +63,7 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
     layer4_conv_1x1 = tf.layers.conv2d(vgg_layer4_out,num_classes,1,padding='same',kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3))
     skip_4 = tf.add(layer7_upsampling, layer4_conv_1x1)
     layer4_upsampling = tf.layers.conv2d_transpose(skip_4,num_classes,4,strides=(2,2),padding='same',kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3))
-    
+
     layer3_conv_1x1 = tf.layers.conv2d(vgg_layer3_out,num_classes,1,padding='same',kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3))
     skip_3 = tf.add(layer4_upsampling, layer3_conv_1x1)
     output = tf.layers.conv2d_transpose(skip_3, num_classes, 16, strides=(8, 8),padding='same',kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3))
@@ -110,21 +110,26 @@ def train_nn(sess, epochs, batch_size, get_batches_fn, train_op, cross_entropy_l
     """
     count =0
     # TODO: Implement function
+    f = open("loss.txt","a")
+    f.write("Start Time {}\n".format(time.time()))
     sess.run(tf.global_variables_initializer())
     for epoch in range(epochs):
         print("EPOCH {} ...".format(epoch+1))
+        f.write("EPOCH {} ...\n".format(epoch+1))
         for image, label in get_batches_fn(batch_size):
             test, loss = sess.run([train_op, cross_entropy_loss], 
-                               feed_dict={input_image: image, correct_label: label, keep_prob: 0.5, learning_rate: 10e-6})
+                               feed_dict={input_image: image, correct_label: label, keep_prob: 0.5, learning_rate: 0.0009})
             print("Loss: = {:.3f}".format(loss))
-            print()
-
+            f.write("Loss: = {:.3f}\n".format(loss))
+        print()
+    f.write("End Time {}\n".format(time.time()))
+    f.close()
 tests.test_train_nn(train_nn)
 
 
 def run():
-    epochs =6
-    batch_size =1
+    epochs =50
+    batch_size =5
     
     num_classes = 2
     image_shape = (160, 576)
