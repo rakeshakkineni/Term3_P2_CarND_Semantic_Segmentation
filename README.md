@@ -24,7 +24,7 @@ Source code provided by "CarND-Semantic-Segmentation" was used as base for this 
 File main.py was modified to implement this project. All the functions with TODO were completed. Following are the details of the modifications. 
 
 #### load_vgg function modifications: 
-Using Tensor Flow saved_model routine saved vgg model is loaded. Each of the layers of the loaded model outputs are saved into saperate tensors and returned for later use. 
+Using Tensor Flow "saved_model" routine, the saved vgg model was loaded. Each of the layers of the loaded model outputs are saved into saperate tensors and returned for later use. 
 
 #### layers function modifications:
 Outputs of "load_vgg" function are used in this function. This function is used for adding upsampling the output of VGG to original image shape.
@@ -51,9 +51,9 @@ All the required inputs for the functions to compile were fed.
 ### Development Steps 
 I have started with code shown in Project Walkthrough video. I have completed the functions taking ques from class and Project Walkthrough. With couple of trials i was able to compile the code without any errors , had struggled to understand how to match dimensions of the skip layers and the upsampled layers. In project walk through it was mentioned that upsampling needs to be done twice with a stride of 2 each time and a final upsampling of 8 , i followed these ques and implemented the model. 
 
-I did not realize the model would be so big and so i tried a few times to run the training on my laptop but every attempt has failed as even with a batch size of '1' model needed a minimum of 3GB+ GPU RAM and my laptop has just 2GB GPU RAM. I have attempted to train the model on CPU's but the training process was really very slow i.e each EPOCH took 45mins to finish. 
+I did not realize that the model would be so big and so i tried a few times to run the training on my laptop but every attempt has failed even with a batch size of '1' model needed a minimum of 3GB+ GPU RAM and my laptop has just 2GB GPU RAM. I have attempted to train the model on CPU's but the training process was really very slow i.e each EPOCH took 45mins to finish. 
 
-I have used Amazon AWS service, trained it using t2.xlarge instance. G2.2x instance is not sufficient as it only has 4GB GPU RAM and it could at the max support a batch_size of 2. 
+I have used Amazon AWS service finally, trained it using t2.xlarge instance. g2.2x instance is not sufficient as it only has 4GB GPU RAM and it could at the max support a batch_size of 2, so i moved to t2.xlarge instance.
 
 I have trained the model using following combinations of parameters. 
 
@@ -69,9 +69,11 @@ I have trained the model using following combinations of parameters.
 
 ### Results
 - Following picture shows the trend of Loss over multiple epoches
+
 ![alt text][image1]
 
 - Following pictures show the final results
+
 ![alt text][image2]
 
 ![alt text][image3]
