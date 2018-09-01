@@ -9,11 +9,11 @@ The goals of this project are :
 
 [//]: # (Image References)
 
-[image1]: ./output/EPOCH Vs LOSS.png "Undistorted"
-[image2]: ./output/um_000081.png 
-[image3]: ./output/umm_000007.png 
-[image4]: ./output/umm_000008.png
-[image5]: ./output/uu_000024.png
+[image1]: ./output/EPOCHVsLOSS.png "EpochVsLoss"
+[image2]: ./output/um_000081.png "Output Image 1"
+[image3]: ./output/umm_000007.png "Output Image 2"
+[image4]: ./output/umm_000008.png "Output Image 3"
+[image5]: ./output/uu_000024.png "Output Image 4"
 
 
 ---
