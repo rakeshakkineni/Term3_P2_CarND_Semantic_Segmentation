@@ -7,6 +7,15 @@ The goals of this project are :
 * Complete the TODO part of the original project. 
 * Train the model and provide proof that the trained model is able to label the pixles of the road correctly. 
 
+[//]: # (Image References)
+
+[image1]: ./output/EPOCH Vs LOSS.png "Undistorted"
+[image2]: ./output/um_000081.png 
+[image3]: ./output/umm_000007.png 
+[image4]: ./output/umm_000008.png
+[image5]: ./output/uu_000024.png
+
+
 ---
 ### Writeup / README
 Source code provided by "CarND-Semantic-Segmentation" was used as base for this project. 
@@ -39,8 +48,6 @@ This is main function where in the complete training and testing is performed. T
 
 All the required inputs for the functions to compile were fed. 
 
-Code for this project can be found [here ](./src)
-
 ### Development Steps 
 I have started with code shown in Project Walkthrough video. I have completed the functions taking ques from class and Project Walkthrough. With couple of trials i was able to compile the code without any errors , had struggled to understand how to match dimensions of the skip layers and the upsampled layers. In project walk through it was mentioned that upsampling needs to be done twice with a stride of 2 each time and a final upsampling of 8 , i followed these ques and implemented the model. 
 
@@ -61,6 +68,17 @@ I have trained the model using following combinations of parameters.
   training_rate = 0.0009
 
 ### Results
+- Following picture shows the trend of Loss over multiple epoches
+![alt text][image1]
 
+- Following pictures show the final results
+![alt text][image2]
+
+![alt text][image3]
+
+![alt text][image4]
+
+![alt text][image5]
 
 ### Limitations
+- In some cases road is not properly identified especially if the road has a divider in between. Model can be futher improved by introducing some image preprocessing techniques. Due to the limited time i did not explore further. 
